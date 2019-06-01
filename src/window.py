@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
 
 from src.gui import Ui_MainWindow
 
@@ -14,6 +15,9 @@ class Window(QMainWindow):
         self.curr_color = '#000'
         self.ui.color_button.setStyleSheet('background-color: ' + self.curr_color + ';')
 
+        self.curr_font = QFont('Arial', 12)
+        self.set_font_button_text()
+
         self.curr_size = 10
         self.min_size = 1
         self.max_size = 100
@@ -25,7 +29,7 @@ class Window(QMainWindow):
         self.ui.size_spin.setValue(self.curr_size)
 
         self.ui.color_button.clicked.connect(self.pick_color)
-
+        self.ui.font_button.clicked.connect(self.pick_font)
         self.ui.size_slider.valueChanged.connect(self.size_slider_changed)
         self.ui.size_spin.valueChanged.connect(self.size_spin_changed)
 
@@ -35,6 +39,22 @@ class Window(QMainWindow):
         if color.isValid():
             self.curr_color = color.name()
             self.ui.color_button.setStyleSheet('background-color: ' + self.curr_color + ';')
+
+    def set_font_button_text(self):
+
+        button_font = QFont(self.curr_font)
+        button_font.setPointSize(11)
+        print(self.curr_font.pointSize())
+        self.ui.font_button.setText(str(self.curr_font.pointSize()) +
+                                    ' ' + self.curr_font.family()[0:10])
+        self.ui.font_button.setFont(button_font)
+
+    def pick_font(self):
+
+        font, ok = QFontDialog.getFont()
+        if ok:
+            self.curr_font = font
+            self.set_font_button_text()
 
     def size_slider_changed(self):
 
