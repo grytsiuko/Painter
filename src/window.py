@@ -12,6 +12,9 @@ class Window(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        self.file_name = None
+        self.file_dialog_options = QFileDialog.Options()
+        self.file_dialog_options |= QFileDialog.DontUseNativeDialog
         self.scene = None
         self.zoom_rate = 1.25
 
@@ -36,6 +39,8 @@ class Window(QMainWindow):
 
         # actions
         self.ui.actionOpen.triggered.connect(self.open_file)
+        self.ui.actionSave.triggered.connect(self.save_file)
+        self.ui.actionSave_As.triggered.connect(self.save_as_file)
         self.ui.actionZoom_In.triggered.connect(self.zoom_in)
         self.ui.actionZoom_Out.triggered.connect(self.zoom_out)
 
@@ -52,18 +57,36 @@ class Window(QMainWindow):
 
     def open_file(self):
 
-        options = QFileDialog.Options()
-        options |= QFileDialog.DontUseNativeDialog
-        file_name, _ = QFileDialog.getOpenFileName(self, "Open File", "",
-                                                   "Images (*.jpg *.jpeg *.png)",
-                                                   options=options)
-
-        if file_name:
+        new_file_name, _ = QFileDialog.getOpenFileName(self, "Open File", "",
+                                                       "Images (*.jpg *.jpeg *.png)",
+                                                       options=self.file_dialog_options)
+        if new_file_name:
             self.close_file()
+            self.file_name = new_file_name
             self.scene = QGraphicsScene()
             self.ui.graphicsView.setScene(self.scene)
-            img = QGraphicsPixmapItem(QPixmap(file_name))
+            img = QGraphicsPixmapItem(QPixmap(new_file_name))
             self.scene.addItem(img)
+
+    def save_file(self):
+
+        if self.file_name is None:
+            self.save_as_file()
+        else:
+            img = QPixmap(self.scene.width(), self.scene.height())
+            painter = QPainter(img)
+            self.scene.render(painter)
+            painter.end()
+            img.save(self.file_name)
+
+    def save_as_file(self):
+
+        new_file_name, _ = QFileDialog.getSaveFileName(self, "Save File", "",
+                                                       "Images (*.jpg *.jpeg *.png)",
+                                                       options=self.file_dialog_options)
+        if new_file_name:
+            self.file_name = new_file_name
+            self.save_file()
 
     def zoom_in(self):
 
