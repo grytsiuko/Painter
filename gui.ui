@@ -455,6 +455,8 @@ border-radius: 10px;</string>
     </property>
     <addaction name="actionNew"/>
     <addaction name="actionOpen"/>
+    <addaction name="actionClose"/>
+    <addaction name="separator"/>
     <addaction name="actionSave_As"/>
     <addaction name="actionSave"/>
    </widget>
@@ -533,6 +535,14 @@ border-radius: 10px;</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+-</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="text">
+    <string>Close</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
    </property>
   </action>
  </widget>

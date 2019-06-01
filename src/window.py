@@ -39,6 +39,7 @@ class Window(QMainWindow):
 
         # actions
         self.ui.actionOpen.triggered.connect(self.open_file)
+        self.ui.actionClose.triggered.connect(self.close_file)
         self.ui.actionSave.triggered.connect(self.save_file)
         self.ui.actionSave_As.triggered.connect(self.save_as_file)
         self.ui.actionZoom_In.triggered.connect(self.zoom_in)
@@ -53,7 +54,10 @@ class Window(QMainWindow):
 
     def close_file(self):
 
-        pass
+        self.file_name = None
+        self.scene = None
+        self.ui.graphicsView.setScene(None)
+        return True
 
     def open_file(self):
 
@@ -61,7 +65,8 @@ class Window(QMainWindow):
                                                        "Images (*.jpg *.jpeg *.png)",
                                                        options=self.file_dialog_options)
         if new_file_name:
-            self.close_file()
+            if not self.close_file():
+                return
             self.file_name = new_file_name
             self.scene = QGraphicsScene()
             self.ui.graphicsView.setScene(self.scene)
@@ -81,10 +86,15 @@ class Window(QMainWindow):
 
     def save_as_file(self):
 
+        if self.scene is None:
+            return
         new_file_name, _ = QFileDialog.getSaveFileName(self, "Save File", "",
                                                        "Images (*.jpg *.jpeg *.png)",
                                                        options=self.file_dialog_options)
         if new_file_name:
+            if new_file_name[-4:] != '.png' and new_file_name[-4:] != '.jpg' \
+                    and new_file_name[-5:] != '.jpeg':
+                new_file_name += '.png'
             self.file_name = new_file_name
             self.save_file()
 

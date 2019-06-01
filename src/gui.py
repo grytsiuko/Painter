@@ -210,8 +210,12 @@ class Ui_MainWindow(object):
         self.actionZoom_In.setObjectName("actionZoom_In")
         self.actionZoom_Out = QtWidgets.QAction(MainWindow)
         self.actionZoom_Out.setObjectName("actionZoom_Out")
+        self.actionClose = QtWidgets.QAction(MainWindow)
+        self.actionClose.setObjectName("actionClose")
         self.menuFile.addAction(self.actionNew)
         self.menuFile.addAction(self.actionOpen)
+        self.menuFile.addAction(self.actionClose)
+        self.menuFile.addSeparator()
         self.menuFile.addAction(self.actionSave_As)
         self.menuFile.addAction(self.actionSave)
         self.menuEdit.addAction(self.actionUndo)
@@ -266,5 +270,7 @@ class Ui_MainWindow(object):
         self.actionZoom_In.setShortcut(_translate("MainWindow", "Ctrl+="))
         self.actionZoom_Out.setText(_translate("MainWindow", "Zoom Out"))
         self.actionZoom_Out.setShortcut(_translate("MainWindow", "Ctrl+-"))
+        self.actionClose.setText(_translate("MainWindow", "Close"))
+        self.actionClose.setShortcut(_translate("MainWindow", "Ctrl+W"))
 
 
