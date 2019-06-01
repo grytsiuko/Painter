@@ -328,7 +328,7 @@
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
-        <widget class="QToolButton" name="toolButton">
+        <widget class="QToolButton" name="color_button">
          <property name="geometry">
           <rect>
            <x>70</x>
@@ -356,7 +356,7 @@ border-radius: 10px;</string>
           <rect>
            <x>20</x>
            <y>80</y>
-           <width>171</width>
+           <width>272</width>
            <height>104</height>
           </rect>
          </property>
@@ -376,14 +376,14 @@ border-radius: 10px;</string>
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QSlider" name="horizontalSlider">
+           <widget class="QSlider" name="size_slider">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="QFontComboBox" name="fontComboBox"/>
+           <widget class="QFontComboBox" name="font_picker"/>
           </item>
           <item row="2" column="0">
            <widget class="QLabel" name="label_2">
@@ -393,7 +393,7 @@ border-radius: 10px;</string>
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="QCheckBox" name="checkBox">
+           <widget class="QCheckBox" name="filled_check">
             <property name="text">
              <string/>
             </property>
