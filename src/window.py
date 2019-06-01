@@ -28,10 +28,14 @@ class Window(QMainWindow):
         self.ui.size_spin.setMaximum(self.max_size)
         self.ui.size_spin.setValue(self.curr_size)
 
+        self.curr_filled = False
+        self.ui.filled_check.setChecked(self.curr_filled)
+
         self.ui.color_button.clicked.connect(self.pick_color)
         self.ui.font_button.clicked.connect(self.pick_font)
         self.ui.size_slider.valueChanged.connect(self.size_slider_changed)
         self.ui.size_spin.valueChanged.connect(self.size_spin_changed)
+        self.ui.filled_check.stateChanged.connect(self.filled_changed)
 
     def pick_color(self):
 
@@ -44,7 +48,6 @@ class Window(QMainWindow):
 
         button_font = QFont(self.curr_font)
         button_font.setPointSize(11)
-        print(self.curr_font.pointSize())
         self.ui.font_button.setText(str(self.curr_font.pointSize()) +
                                     ' ' + self.curr_font.family()[0:10])
         self.ui.font_button.setFont(button_font)
@@ -65,3 +68,7 @@ class Window(QMainWindow):
 
         self.curr_size = self.ui.size_spin.value()
         self.ui.size_slider.setValue(self.curr_size)
+
+    def filled_changed(self):
+
+        self.curr_filled = bool(self.ui.filled_check.checkState())
