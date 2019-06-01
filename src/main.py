@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets
 import sys
 
-from src.window import Window
+from src.root import Root
 
 
 class Main:
@@ -11,7 +11,7 @@ class Main:
 
         app = QtWidgets.QApplication([])
 
-        window = Window()
-        window.show()
+        root = Root()
+        root.show()
 
         sys.exit(app.exec())
