@@ -13,6 +13,7 @@ class Window(QMainWindow):
         self.ui.setupUi(self)
 
         self.scene = None
+        self.zoom_rate = 1.25
 
         self.curr_color = '#000'
         self.ui.color_button.setStyleSheet('background-color: ' + self.curr_color + ';')
@@ -35,6 +36,8 @@ class Window(QMainWindow):
 
         # actions
         self.ui.actionOpen.triggered.connect(self.open_file)
+        self.ui.actionZoom_In.triggered.connect(self.zoom_in)
+        self.ui.actionZoom_Out.triggered.connect(self.zoom_out)
 
         # settings
         self.ui.color_button.clicked.connect(self.pick_color)
@@ -54,12 +57,21 @@ class Window(QMainWindow):
         file_name, _ = QFileDialog.getOpenFileName(self, "Open File", "",
                                                    "Images (*.jpg *.jpeg *.png)",
                                                    options=options)
+
         if file_name:
             self.close_file()
             self.scene = QGraphicsScene()
             self.ui.graphicsView.setScene(self.scene)
             img = QGraphicsPixmapItem(QPixmap(file_name))
             self.scene.addItem(img)
+
+    def zoom_in(self):
+
+        self.ui.graphicsView.scale(self.zoom_rate, self.zoom_rate)
+
+    def zoom_out(self):
+
+        self.ui.graphicsView.scale(1 / self.zoom_rate, 1 / self.zoom_rate)
 
     def pick_color(self):
 
