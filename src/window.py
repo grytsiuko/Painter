@@ -12,6 +12,8 @@ class Window(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        self.scene = None
+
         self.curr_color = '#000'
         self.ui.color_button.setStyleSheet('background-color: ' + self.curr_color + ';')
 
@@ -31,11 +33,33 @@ class Window(QMainWindow):
         self.curr_filled = False
         self.ui.filled_check.setChecked(self.curr_filled)
 
+        # actions
+        self.ui.actionOpen.triggered.connect(self.open_file)
+
+        # settings
         self.ui.color_button.clicked.connect(self.pick_color)
         self.ui.font_button.clicked.connect(self.pick_font)
         self.ui.size_slider.valueChanged.connect(self.size_slider_changed)
         self.ui.size_spin.valueChanged.connect(self.size_spin_changed)
         self.ui.filled_check.stateChanged.connect(self.filled_changed)
+
+    def close_file(self):
+
+        pass
+
+    def open_file(self):
+
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        file_name, _ = QFileDialog.getOpenFileName(self, "Open File", "",
+                                                   "Images (*.jpg *.jpeg *.png)",
+                                                   options=options)
+        if file_name:
+            self.close_file()
+            self.scene = QGraphicsScene()
+            self.ui.graphicsView.setScene(self.scene)
+            img = QGraphicsPixmapItem(QPixmap(file_name))
+            self.scene.addItem(img)
 
     def pick_color(self):
 

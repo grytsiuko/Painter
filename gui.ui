@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1011</width>
-    <height>768</height>
+    <width>800</width>
+    <height>650</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -426,12 +426,9 @@ border-radius: 10px;</string>
      </layout>
     </item>
     <item>
-     <widget class="QScrollArea" name="scrollArea">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
+     <widget class="QGraphicsView" name="graphicsView">
+      <property name="styleSheet">
+       <string notr="true">background-color: #ddd;</string>
       </property>
       <property name="verticalScrollBarPolicy">
        <enum>Qt::ScrollBarAlwaysOn</enum>
@@ -439,22 +436,6 @@ border-radius: 10px;</string>
       <property name="horizontalScrollBarPolicy">
        <enum>Qt::ScrollBarAlwaysOn</enum>
       </property>
-      <property name="sizeAdjustPolicy">
-       <enum>QAbstractScrollArea::AdjustToContents</enum>
-      </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
-      </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents_6">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>758</width>
-         <height>712</height>
-        </rect>
-       </property>
-      </widget>
      </widget>
     </item>
    </layout>
@@ -464,7 +445,7 @@ border-radius: 10px;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1011</width>
+     <width>800</width>
      <height>22</height>
     </rect>
    </property>
