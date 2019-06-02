@@ -4,6 +4,7 @@ from PyQt5.QtGui import *
 from src.gui.gui_root import Ui_MainWindow
 from src.functions.action_functions import ActionFunctions
 from src.functions.settings_functions import SettingsFunctions
+from src.tools.pencil import Pencil
 
 
 class Root(QMainWindow):
@@ -21,9 +22,10 @@ class Root(QMainWindow):
         self.max_size = 100
         self.curr_size = 10
         self.curr_filled = False
-        self.curr_color = '#000'
+        self.curr_color = '#aaa'
         self.curr_font = QFont('Arial', 12)
         self.curr_zoom = 1
+        self.curr_tool = Pencil(self)
 
         # actions
         self.action_functions = ActionFunctions(self)
