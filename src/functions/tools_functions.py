@@ -1,5 +1,6 @@
 from src.tools.pencil import Pencil
 from src.tools.brush import Brush
+from src.tools.eraser import Eraser
 
 
 class ToolsFunctions:
@@ -27,3 +28,9 @@ class ToolsFunctions:
         self.root.curr_tool = Brush(self.root)
         self.restore_buttons()
         self.root.ui.brush_button.setStyleSheet('background-color: ' + self.button_selected_bg + ';')
+
+    def choose_eraser(self):
+
+        self.root.curr_tool = Eraser(self.root)
+        self.restore_buttons()
+        self.root.ui.eraser_button.setStyleSheet('background-color: ' + self.button_selected_bg + ';')
