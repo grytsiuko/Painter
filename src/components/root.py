@@ -23,7 +23,7 @@ class Root(QMainWindow):
         self.curr_size = 30
         self.curr_filled = False
         self.curr_color = '#666'
-        self.curr_font = QFont('Arial', 12)
+        # self.curr_font = QFont('Arial', 12)
         self.curr_zoom = 1
         self.curr_tool = None
 
@@ -53,7 +53,7 @@ class Root(QMainWindow):
         # settings
         self.settings_functions = SettingsFunctions(self)
         self.ui.color_button.clicked.connect(self.settings_functions.pick_color)
-        self.ui.font_button.clicked.connect(self.settings_functions.pick_font)
+        # self.ui.font_button.clicked.connect(self.settings_functions.pick_font)
         self.ui.size_slider.valueChanged.connect(self.settings_functions.size_slider_changed)
         self.ui.size_spin.valueChanged.connect(self.settings_functions.size_spin_changed)
         self.ui.filled_check.stateChanged.connect(self.settings_functions.filled_changed)
