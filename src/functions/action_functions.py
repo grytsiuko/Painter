@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 
 from src.components.scene import Scene
+from src.components.new_file_dialog import NewFileDialog
 
 
 class ActionFunctions:
@@ -18,10 +19,16 @@ class ActionFunctions:
         if not self.close_file():
             return
 
+        dialog = NewFileDialog()
+        code = dialog.exec()
+
+        if code == 0:
+            return
+
         self.root.scene = Scene(self.root)
         self.root.ui.graphicsView.setScene(self.root.scene)
 
-        white_sheet = QPixmap(640, 400)
+        white_sheet = QPixmap(dialog.ui.width_spin.value(), dialog.ui.height_spin.value())
         white_sheet.fill()
         bg = QGraphicsPixmapItem(white_sheet)
         self.root.scene.addItem(bg)

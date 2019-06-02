@@ -1,1 +1,2 @@
-pyuic5 src/gui/gui.ui -o src/gui/gui.py
+pyuic5 src/gui/gui_root.ui -o src/gui/gui_root.py
+pyuic5 src/gui/gui_new_file_dialog.ui -o src/gui/gui_new_file_dialog.py
