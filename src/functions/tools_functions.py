@@ -5,6 +5,7 @@ from src.tools.pipette import Pipette
 from src.tools.can import Can
 from src.tools.line import Line
 from src.tools.rect import Rect
+from src.tools.oval import Oval
 
 
 class ToolsFunctions:
@@ -62,3 +63,9 @@ class ToolsFunctions:
         self.root.curr_tool = Rect(self.root)
         self.restore_buttons()
         self.root.ui.rect_button.setStyleSheet('background-color: ' + self.button_selected_bg + ';')
+
+    def choose_oval(self):
+
+        self.root.curr_tool = Oval(self.root)
+        self.restore_buttons()
+        self.root.ui.oval_button.setStyleSheet('background-color: ' + self.button_selected_bg + ';')
