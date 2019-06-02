@@ -1,1 +1,1 @@
-pyuic5 gui.ui -o src/gui.py
+pyuic5 src/gui/gui.ui -o src/gui/gui.py

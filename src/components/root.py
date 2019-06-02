@@ -1,9 +1,9 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 
-from src.gui import Ui_MainWindow
-from src.action_functions import ActionFunctions
-from src.settings_functions import SettingsFunctions
+from src.gui.gui import Ui_MainWindow
+from src.functions.action_functions import ActionFunctions
+from src.functions.settings_functions import SettingsFunctions
 
 
 class Root(QMainWindow):

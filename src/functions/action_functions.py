@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 
-from src.scene import Scene
+from src.components.scene import Scene
 
 
 class ActionFunctions:
