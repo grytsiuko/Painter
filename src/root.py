@@ -26,6 +26,7 @@ class Root(QMainWindow):
 
         # actions
         self.action_functions = ActionFunctions(self)
+        self.ui.actionNew.triggered.connect(self.action_functions.new_file)
         self.ui.actionOpen.triggered.connect(self.action_functions.open_file)
         self.ui.actionClose.triggered.connect(self.action_functions.close_file)
         self.ui.actionSave.triggered.connect(self.action_functions.save_file)

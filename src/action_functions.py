@@ -13,19 +13,41 @@ class ActionFunctions:
         self.file_dialog_options |= QFileDialog.DontUseNativeDialog
         self.zoom_rate = 1.25
 
+    def new_file(self):
+
+        if not self.close_file():
+            return
+
+        self.root.scene = Scene(self.root)
+        self.root.ui.graphicsView.setScene(self.root.scene)
+
+        white_sheet = QPixmap(640, 400)
+        white_sheet.fill()
+        bg = QGraphicsPixmapItem(white_sheet)
+        self.root.scene.addItem(bg)
+
     def open_file(self):
 
         new_file_name, _ = QFileDialog.getOpenFileName(self.root, "Open File", "",
                                                        "Images (*.jpg *.jpeg *.png)",
                                                        options=self.file_dialog_options)
         if new_file_name:
+
             if not self.close_file():
                 return
+
             self.root.file_name = new_file_name
             self.root.scene = Scene(self.root)
             self.root.ui.graphicsView.setScene(self.root.scene)
-            img = QGraphicsPixmapItem(QPixmap(new_file_name))
-            self.root.scene.addItem(img)
+
+            img = QPixmap(new_file_name)
+            white_sheet = QPixmap(img.width(), img.height())
+            white_sheet.fill()
+
+            bg = QGraphicsPixmapItem(white_sheet)
+            insertion = QGraphicsPixmapItem(img)
+            self.root.scene.addItem(bg)
+            self.root.scene.addItem(insertion)
 
     def close_file(self):
 
