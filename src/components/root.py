@@ -43,6 +43,8 @@ class Root(QMainWindow):
         self.ui.brush_button.clicked.connect(self.tools_functions.choose_brush)
         self.ui.eraser_button.clicked.connect(self.tools_functions.choose_eraser)
         self.ui.pipette_button.clicked.connect(self.tools_functions.choose_pipette)
+        self.ui.can_button.clicked.connect(self.tools_functions.choose_can)
+        self.ui.line_button.clicked.connect(self.tools_functions.choose_line)
 
         self.tools_functions.choose_pencil()
 
