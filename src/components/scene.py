@@ -40,7 +40,7 @@ class Scene(QGraphicsScene):
         if self.pressed:
 
             pos = event.scenePos()
-            self.root.curr_tool.proceed(self.new_layer_img, int(pos.x()), int(pos.y()))
+            self.root.curr_tool.proceed(int(pos.x()), int(pos.y()))
             self.refresh_new_layer()
 
     def mouseReleaseEvent(self, event):
@@ -49,5 +49,5 @@ class Scene(QGraphicsScene):
 
             self.pressed = False
             pos = event.scenePos()
-            self.root.curr_tool.end(self.new_layer_img, int(pos.x()), int(pos.y()))
+            self.root.curr_tool.end(int(pos.x()), int(pos.y()))
             self.refresh_new_layer()

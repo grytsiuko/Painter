@@ -17,11 +17,11 @@ class Pencil:
         self.last_y = y
         self.draw_line(x, y)
 
-    def proceed(self, img, x, y):
+    def proceed(self, x, y):
 
         self.draw_line(x, y)
 
-    def end(self, img, x, y):
+    def end(self, x, y):
 
         self.draw_line(x, y)
 
