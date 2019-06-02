@@ -17,12 +17,13 @@ class Root(QMainWindow):
         # set up settings
         self.file_name = None
         self.scene = None
-        self.curr_color = '#000'
-        self.curr_font = QFont('Arial', 12)
         self.min_size = 1
         self.max_size = 100
         self.curr_size = 10
         self.curr_filled = False
+        self.curr_color = '#000'
+        self.curr_font = QFont('Arial', 12)
+        self.curr_zoom = 1
 
         # actions
         self.action_functions = ActionFunctions(self)

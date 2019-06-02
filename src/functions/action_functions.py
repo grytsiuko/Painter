@@ -27,6 +27,8 @@ class ActionFunctions:
 
         self.root.scene = Scene(self.root)
         self.root.ui.graphicsView.setScene(self.root.scene)
+        self.root.ui.graphicsView.scale(1 / self.root.curr_zoom, 1 / self.root.curr_zoom)
+        self.root.curr_zoom = 1
 
         white_sheet = QPixmap(dialog.ui.width_spin.value(), dialog.ui.height_spin.value())
         white_sheet.fill()
@@ -38,23 +40,23 @@ class ActionFunctions:
         new_file_name, _ = QFileDialog.getOpenFileName(self.root, "Open File", "",
                                                        "Images (*.jpg *.jpeg *.png)",
                                                        options=self.file_dialog_options)
-        if new_file_name:
+        if not new_file_name or not self.close_file():
+            return
 
-            if not self.close_file():
-                return
+        self.root.file_name = new_file_name
+        self.root.scene = Scene(self.root)
+        self.root.ui.graphicsView.setScene(self.root.scene)
+        self.root.ui.graphicsView.scale(1 / self.root.curr_zoom, 1 / self.root.curr_zoom)
+        self.root.curr_zoom = 1
 
-            self.root.file_name = new_file_name
-            self.root.scene = Scene(self.root)
-            self.root.ui.graphicsView.setScene(self.root.scene)
+        img = QPixmap(new_file_name)
+        white_sheet = QPixmap(img.width(), img.height())
+        white_sheet.fill()
 
-            img = QPixmap(new_file_name)
-            white_sheet = QPixmap(img.width(), img.height())
-            white_sheet.fill()
-
-            bg = QGraphicsPixmapItem(white_sheet)
-            insertion = QGraphicsPixmapItem(img)
-            self.root.scene.addItem(bg)
-            self.root.scene.addItem(insertion)
+        bg = QGraphicsPixmapItem(white_sheet)
+        insertion = QGraphicsPixmapItem(img)
+        self.root.scene.addItem(bg)
+        self.root.scene.addItem(insertion)
 
     def close_file(self):
 
@@ -90,8 +92,16 @@ class ActionFunctions:
 
     def zoom_in(self):
 
+        if self.root.scene.width() * self.root.curr_zoom * self.zoom_rate > 10000 or \
+                self.root.scene.height() * self.root.curr_zoom * self.zoom_rate > 10000:
+            return
         self.root.ui.graphicsView.scale(self.zoom_rate, self.zoom_rate)
+        self.root.curr_zoom *= self.zoom_rate
 
     def zoom_out(self):
 
+        if self.root.scene.width() * self.root.curr_zoom / self.zoom_rate < 1 or \
+                self.root.scene.height() * self.root.curr_zoom / self.zoom_rate < 1:
+            return
         self.root.ui.graphicsView.scale(1 / self.zoom_rate, 1 / self.zoom_rate)
+        self.root.curr_zoom /= self.zoom_rate
