@@ -3,6 +3,7 @@ from PyQt5.QtGui import *
 
 from src.components.scene import Scene
 from src.components.new_file_dialog import NewFileDialog
+from src.components.exit_dialog import ExitDialog
 
 
 class ActionFunctions:
@@ -35,10 +36,13 @@ class ActionFunctions:
 
     def open_file(self):
 
+        if not self.close_file():
+            return
+
         new_file_name, _ = QFileDialog.getOpenFileName(self.root, "Open File", "",
                                                        "Images (*.jpg *.jpeg *.png)",
                                                        options=self.file_dialog_options)
-        if not new_file_name or not self.close_file():
+        if not new_file_name:
             return
 
         self.root.file_name = new_file_name
@@ -56,6 +60,14 @@ class ActionFunctions:
 
     def close_file(self):
 
+        if not self.root.saved:
+
+            dialog = ExitDialog()
+            code = dialog.exec()
+
+            if code == 0:
+                return False
+
         self.root.file_name = None
         self.root.scene = None
         self.root.ui.graphicsView.setScene(None)
@@ -64,6 +76,7 @@ class ActionFunctions:
         self.root.layers_undone = list()
         self.root.layers = list()
         self.root.file_name = None
+        self.root.saved = True
         return True
 
     def save_as_file(self):
@@ -90,6 +103,7 @@ class ActionFunctions:
             self.root.scene.render(painter)
             painter.end()
             img.save(self.root.file_name)
+            self.root.saved = True
 
     def zoom_in(self):
 
@@ -113,6 +127,7 @@ class ActionFunctions:
             layer = self.root.layers.pop(-1)
             self.root.scene.removeItem(layer)
             self.root.layers_undone.append(layer)
+            self.root.saved = False
 
     def redo(self):
 
@@ -120,3 +135,4 @@ class ActionFunctions:
             layer = self.root.layers_undone.pop(-1)
             self.root.scene.addItem(layer)
             self.root.layers.append(layer)
+            self.root.saved = False

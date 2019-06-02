@@ -28,6 +28,7 @@ class Root(QMainWindow):
         self.curr_tool = None
         self.layers = list()
         self.layers_undone = list()
+        self.saved = True
 
         # actions
         self.action_functions = ActionFunctions(self)
@@ -47,7 +48,7 @@ class Root(QMainWindow):
         self.ui.brush_button.clicked.connect(self.tools_functions.choose_brush)
         self.ui.eraser_button.clicked.connect(self.tools_functions.choose_eraser)
         self.ui.pipette_button.clicked.connect(self.tools_functions.choose_pipette)
-        self.ui.can_button.clicked.connect(self.tools_functions.choose_can)
+        # self.ui.can_button.clicked.connect(self.tools_functions.choose_can)
         self.ui.line_button.clicked.connect(self.tools_functions.choose_line)
         self.ui.rect_button.clicked.connect(self.tools_functions.choose_rect)
         self.ui.oval_button.clicked.connect(self.tools_functions.choose_oval)
@@ -61,3 +62,10 @@ class Root(QMainWindow):
         self.ui.size_slider.valueChanged.connect(self.settings_functions.size_slider_changed)
         self.ui.size_spin.valueChanged.connect(self.settings_functions.size_spin_changed)
         self.ui.filled_check.stateChanged.connect(self.settings_functions.filled_changed)
+
+    def closeEvent(self, event):
+
+        if self.action_functions.close_file():
+            event.accept()
+        else:
+            event.ignore()

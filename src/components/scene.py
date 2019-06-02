@@ -32,6 +32,7 @@ class Scene(QGraphicsScene):
             self.root.scene.addItem(self.new_layer_item)
             self.root.layers.append(self.new_layer_item)
             self.root.layers_undone = list()
+            self.root.saved = False
 
             pos = event.scenePos()
             self.root.curr_tool.start(self.new_layer_img, int(pos.x()), int(pos.y()))
