@@ -27,8 +27,6 @@ class ActionFunctions:
 
         self.root.scene = Scene(self.root)
         self.root.ui.graphicsView.setScene(self.root.scene)
-        self.root.ui.graphicsView.scale(1 / self.root.curr_zoom, 1 / self.root.curr_zoom)
-        self.root.curr_zoom = 1
 
         white_sheet = QPixmap(dialog.ui.width_spin.value(), dialog.ui.height_spin.value())
         white_sheet.fill()
@@ -46,8 +44,6 @@ class ActionFunctions:
         self.root.file_name = new_file_name
         self.root.scene = Scene(self.root)
         self.root.ui.graphicsView.setScene(self.root.scene)
-        self.root.ui.graphicsView.scale(1 / self.root.curr_zoom, 1 / self.root.curr_zoom)
-        self.root.curr_zoom = 1
 
         img = QPixmap(new_file_name)
         white_sheet = QPixmap(img.width(), img.height())
@@ -63,6 +59,11 @@ class ActionFunctions:
         self.root.file_name = None
         self.root.scene = None
         self.root.ui.graphicsView.setScene(None)
+        self.root.ui.graphicsView.scale(1 / self.root.curr_zoom, 1 / self.root.curr_zoom)
+        self.root.curr_zoom = 1
+        self.root.layers_undone = list()
+        self.root.layers = list()
+        self.root.file_name = None
         return True
 
     def save_as_file(self):
@@ -105,3 +106,17 @@ class ActionFunctions:
             return
         self.root.ui.graphicsView.scale(1 / self.zoom_rate, 1 / self.zoom_rate)
         self.root.curr_zoom /= self.zoom_rate
+
+    def undo(self):
+
+        if len(self.root.layers):
+            layer = self.root.layers.pop(-1)
+            self.root.scene.removeItem(layer)
+            self.root.layers_undone.append(layer)
+
+    def redo(self):
+
+        if len(self.root.layers_undone):
+            layer = self.root.layers_undone.pop(-1)
+            self.root.scene.addItem(layer)
+            self.root.layers.append(layer)

@@ -26,6 +26,8 @@ class Root(QMainWindow):
         # self.curr_font = QFont('Arial', 12)
         self.curr_zoom = 1
         self.curr_tool = None
+        self.layers = list()
+        self.layers_undone = list()
 
         # actions
         self.action_functions = ActionFunctions(self)
@@ -36,6 +38,8 @@ class Root(QMainWindow):
         self.ui.actionSave_As.triggered.connect(self.action_functions.save_as_file)
         self.ui.actionZoom_In.triggered.connect(self.action_functions.zoom_in)
         self.ui.actionZoom_Out.triggered.connect(self.action_functions.zoom_out)
+        self.ui.actionUndo.triggered.connect(self.action_functions.undo)
+        self.ui.actionRedo.triggered.connect(self.action_functions.redo)
 
         # tools
         self.tools_functions = ToolsFunctions(self)

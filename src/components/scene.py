@@ -30,6 +30,8 @@ class Scene(QGraphicsScene):
             self.new_layer_img = Image.new('RGBA', (int(self.root.scene.width()), int(self.root.scene.height())))
             self.new_layer_item = QGraphicsPixmapItem()
             self.root.scene.addItem(self.new_layer_item)
+            self.root.layers.append(self.new_layer_item)
+            self.root.layers_undone = list()
 
             pos = event.scenePos()
             self.root.curr_tool.start(self.new_layer_img, int(pos.x()), int(pos.y()))
