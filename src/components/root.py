@@ -45,6 +45,7 @@ class Root(QMainWindow):
         self.ui.pipette_button.clicked.connect(self.tools_functions.choose_pipette)
         self.ui.can_button.clicked.connect(self.tools_functions.choose_can)
         self.ui.line_button.clicked.connect(self.tools_functions.choose_line)
+        self.ui.rect_button.clicked.connect(self.tools_functions.choose_rect)
 
         self.tools_functions.choose_pencil()
 
