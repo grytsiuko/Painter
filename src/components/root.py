@@ -4,7 +4,7 @@ from PyQt5.QtGui import *
 from src.gui.gui_root import Ui_MainWindow
 from src.functions.action_functions import ActionFunctions
 from src.functions.settings_functions import SettingsFunctions
-from src.tools.pencil import Pencil
+from src.functions.tools_functions import ToolsFunctions
 
 
 class Root(QMainWindow):
@@ -20,12 +20,12 @@ class Root(QMainWindow):
         self.scene = None
         self.min_size = 1
         self.max_size = 100
-        self.curr_size = 10
+        self.curr_size = 30
         self.curr_filled = False
-        self.curr_color = '#aaa'
+        self.curr_color = '#666'
         self.curr_font = QFont('Arial', 12)
         self.curr_zoom = 1
-        self.curr_tool = Pencil(self)
+        self.curr_tool = None
 
         # actions
         self.action_functions = ActionFunctions(self)
@@ -36,6 +36,13 @@ class Root(QMainWindow):
         self.ui.actionSave_As.triggered.connect(self.action_functions.save_as_file)
         self.ui.actionZoom_In.triggered.connect(self.action_functions.zoom_in)
         self.ui.actionZoom_Out.triggered.connect(self.action_functions.zoom_out)
+
+        # tools
+        self.tools_functions = ToolsFunctions(self)
+        self.ui.pencil_button.clicked.connect(self.tools_functions.choose_pencil)
+        self.ui.brush_button.clicked.connect(self.tools_functions.choose_brush)
+
+        self.tools_functions.choose_pencil()
 
         # settings
         self.settings_functions = SettingsFunctions(self)
