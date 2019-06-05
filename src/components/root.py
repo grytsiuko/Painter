@@ -52,6 +52,7 @@ class Root(QMainWindow):
         self.ui.line_button.clicked.connect(self.tools_functions.choose_line)
         self.ui.rect_button.clicked.connect(self.tools_functions.choose_rect)
         self.ui.oval_button.clicked.connect(self.tools_functions.choose_oval)
+        self.ui.spray_button.clicked.connect(self.tools_functions.choose_spray)
 
         self.tools_functions.choose_pencil()
 

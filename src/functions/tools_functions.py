@@ -6,6 +6,7 @@ from src.tools.pipette import Pipette
 from src.tools.line import Line
 from src.tools.rect import Rect
 from src.tools.oval import Oval
+from src.tools.spray import Spray
 
 
 class ToolsFunctions:
@@ -69,3 +70,9 @@ class ToolsFunctions:
         self.root.curr_tool = Oval(self.root)
         self.restore_buttons()
         self.root.ui.oval_button.setStyleSheet('background-color: ' + self.button_selected_bg + ';')
+
+    def choose_spray(self):
+
+        self.root.curr_tool = Spray(self.root)
+        self.restore_buttons()
+        self.root.ui.spray_button.setStyleSheet('background-color: ' + self.button_selected_bg + ';')
