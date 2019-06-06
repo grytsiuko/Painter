@@ -2,7 +2,7 @@ from src.tools.pencil import Pencil
 from src.tools.brush import Brush
 from src.tools.eraser import Eraser
 from src.tools.pipette import Pipette
-# from src.tools.can import Can
+from src.tools.can import Can
 from src.tools.line import Line
 from src.tools.rect import Rect
 from src.tools.oval import Oval
@@ -47,11 +47,11 @@ class ToolsFunctions:
         self.restore_buttons()
         self.root.ui.pipette_button.setStyleSheet('background-color: ' + self.button_selected_bg + ';')
 
-    # def choose_can(self):
-    #
-    #     self.root.curr_tool = Can(self.root)
-    #     self.restore_buttons()
-    #     self.root.ui.can_button.setStyleSheet('background-color: ' + self.button_selected_bg + ';')
+    def choose_can(self):
+
+        self.root.curr_tool = Can(self.root)
+        self.restore_buttons()
+        self.root.ui.can_button.setStyleSheet('background-color: ' + self.button_selected_bg + ';')
 
     def choose_line(self):
 

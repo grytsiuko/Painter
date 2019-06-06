@@ -1,5 +1,4 @@
 from PyQt5.QtWidgets import *
-from PyQt5.QtGui import *
 
 from src.gui.gui_root import Ui_MainWindow
 from src.functions.action_functions import ActionFunctions
@@ -48,7 +47,7 @@ class Root(QMainWindow):
         self.ui.brush_button.clicked.connect(self.tools_functions.choose_brush)
         self.ui.eraser_button.clicked.connect(self.tools_functions.choose_eraser)
         self.ui.pipette_button.clicked.connect(self.tools_functions.choose_pipette)
-        # self.ui.can_button.clicked.connect(self.tools_functions.choose_can)
+        self.ui.can_button.clicked.connect(self.tools_functions.choose_can)
         self.ui.line_button.clicked.connect(self.tools_functions.choose_line)
         self.ui.rect_button.clicked.connect(self.tools_functions.choose_rect)
         self.ui.oval_button.clicked.connect(self.tools_functions.choose_oval)
