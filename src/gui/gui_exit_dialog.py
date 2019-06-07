@@ -12,14 +12,14 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(361, 141)
-        Dialog.setMinimumSize(QtCore.QSize(361, 141))
-        Dialog.setMaximumSize(QtCore.QSize(361, 141))
+        Dialog.resize(211, 81)
+        Dialog.setMinimumSize(QtCore.QSize(211, 81))
+        Dialog.setMaximumSize(QtCore.QSize(211, 81))
         self.verticalLayout = QtWidgets.QVBoxLayout(Dialog)
         self.verticalLayout.setObjectName("verticalLayout")
         self.label = QtWidgets.QLabel(Dialog)
         font = QtGui.QFont()
-        font.setPointSize(18)
+        font.setPointSize(11)
         self.label.setFont(font)
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
@@ -37,7 +37,7 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "Exit"))
         self.label.setText(_translate("Dialog", "Discard unsaved changes?"))
 
 
