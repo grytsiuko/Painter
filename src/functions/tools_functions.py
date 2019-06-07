@@ -7,6 +7,7 @@ from src.tools.line import Line
 from src.tools.rect import Rect
 from src.tools.oval import Oval
 from src.tools.spray import Spray
+from src.tools.text import Text
 
 
 class ToolsFunctions:
@@ -76,3 +77,9 @@ class ToolsFunctions:
         self.root.curr_tool = Spray(self.root)
         self.restore_buttons()
         self.root.ui.spray_button.setStyleSheet('background-color: ' + self.button_selected_bg + ';')
+
+    def choose_text(self):
+
+        self.root.curr_tool = Text(self.root)
+        self.restore_buttons()
+        self.root.ui.text_button.setStyleSheet('background-color: ' + self.button_selected_bg + ';')

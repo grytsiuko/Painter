@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import *
-from PyQt5.QtGui import *
+from PyQt5.QtGui import QFont
 
 from src.gui.gui_root import Ui_MainWindow
 from src.functions.action_functions import ActionFunctions
@@ -53,6 +53,7 @@ class Root(QMainWindow):
         self.ui.rect_button.clicked.connect(self.tools_functions.choose_rect)
         self.ui.oval_button.clicked.connect(self.tools_functions.choose_oval)
         self.ui.spray_button.clicked.connect(self.tools_functions.choose_spray)
+        self.ui.text_button.clicked.connect(self.tools_functions.choose_text)
 
         self.tools_functions.choose_pencil()
 
