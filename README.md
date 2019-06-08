@@ -24,9 +24,9 @@ Mac:
 
 Screenshot:
 
-![alt text](screenshot.png) 
+![can not show image](img/screenshot.png) 
 
 
 Class diagram:
 
-![alt text](diagrams/painter.png) 
+![can not show image](img/diagram.png) 

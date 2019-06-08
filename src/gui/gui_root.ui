@@ -78,7 +78,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>icons/pencil.png</normaloff>icons/pencil.png</iconset>
+              <normaloff>img/pencil.png</normaloff>img/pencil.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -107,7 +107,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>icons/layer-shape-ellipse.png</normaloff>icons/layer-shape-ellipse.png</iconset>
+              <normaloff>img/layer-shape-ellipse.png</normaloff>img/layer-shape-ellipse.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -136,7 +136,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>icons/eraser.png</normaloff>icons/eraser.png</iconset>
+              <normaloff>img/eraser.png</normaloff>img/eraser.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -162,7 +162,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>icons/paint-can.png</normaloff>icons/paint-can.png</iconset>
+              <normaloff>img/paint-can.png</normaloff>img/paint-can.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -188,7 +188,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>icons/layer-shape-line.png</normaloff>icons/layer-shape-line.png</iconset>
+              <normaloff>img/layer-shape-line.png</normaloff>img/layer-shape-line.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -214,7 +214,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>icons/paint-brush.png</normaloff>icons/paint-brush.png</iconset>
+              <normaloff>img/paint-brush.png</normaloff>img/paint-brush.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -240,7 +240,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>icons/spray.png</normaloff>icons/spray.png</iconset>
+              <normaloff>img/spray.png</normaloff>img/spray.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -266,7 +266,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>icons/pipette.png</normaloff>icons/pipette.png</iconset>
+              <normaloff>img/pipette.png</normaloff>img/pipette.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -292,7 +292,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>icons/layer-shape.png</normaloff>icons/layer-shape.png</iconset>
+              <normaloff>img/layer-shape.png</normaloff>img/layer-shape.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -318,7 +318,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>icons/edit.png</normaloff>icons/edit.png</iconset>
+              <normaloff>img/edit.png</normaloff>img/edit.png</iconset>
             </property>
             <property name="iconSize">
              <size>
