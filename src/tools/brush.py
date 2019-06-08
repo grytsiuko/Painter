@@ -1,31 +1,21 @@
 from PIL import ImageDraw
 
+from src.tools.tool import Tool
 
-class Brush:
+
+class Brush(Tool):
 
     def __init__(self, root):
 
-        self.root = root
-        self.last_x = None
-        self.last_y = None
-        self.draw = None
+        super().__init__(root)
 
-    def start(self, img, x, y):
+    def configure(self, img, x, y):
 
         self.draw = ImageDraw.Draw(img)
         self.last_x = x
         self.last_y = y
-        self.draw_line(x, y)
 
-    def proceed(self, x, y):
-
-        self.draw_line(x, y)
-
-    def end(self, x, y):
-
-        self.draw_line(x, y)
-
-    def draw_line(self, x, y):
+    def execute(self, x, y):
 
         left = x - self.root.curr_size / 2
         right = left + self.root.curr_size - 1

@@ -35,7 +35,8 @@ class Scene(QGraphicsScene):
             self.root.saved = False
 
             pos = event.scenePos()
-            self.root.curr_tool.start(self.new_layer_img, int(pos.x()), int(pos.y()))
+            self.root.curr_tool.configure(self.new_layer_img, int(pos.x()), int(pos.y()))
+            self.root.curr_tool.start(int(pos.x()), int(pos.y()))
             self.refresh_new_layer()
 
     def mouseMoveEvent(self, event):

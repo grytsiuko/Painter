@@ -1,14 +1,15 @@
 from PyQt5.QtGui import *
 
+from src.tools.tool import Tool
 
-class Pipette:
+
+class Pipette(Tool):
 
     def __init__(self, root):
 
-        self.root = root
-        self.render = None
+        super().__init__(root)
 
-    def start(self, img, x, y):
+    def configure(self, img, x, y):
 
         pix_map = QPixmap(self.root.scene.width(), self.root.scene.height())
         painter = QPainter(pix_map)
@@ -16,17 +17,8 @@ class Pipette:
         painter.end()
 
         self.render = pix_map.toImage()
-        self.check_pixel(x, y)
 
-    def proceed(self, x, y):
-
-        self.check_pixel(x, y)
-
-    def end(self, x, y):
-
-        self.check_pixel(x, y)
-
-    def check_pixel(self, x, y):
+    def execute(self, x, y):
 
         if x < 0 or y < 0 or x >= self.root.scene.width() or y >= self.root.scene.height():
             return

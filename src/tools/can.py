@@ -1,16 +1,16 @@
 from PyQt5.QtGui import *
 from PIL import ImageColor
 
+from src.tools.tool import Tool
 
-class Can:
+
+class Can(Tool):
 
     def __init__(self, root):
 
-        self.root = root
-        self.render = None
-        self.matrix = None
+        super().__init__(root)
 
-    def start(self, img, x, y):
+    def configure(self, img, x, y):
 
         pix_map = QPixmap(self.root.scene.width(), self.root.scene.height())
         painter = QPainter(pix_map)
@@ -19,6 +19,10 @@ class Can:
 
         self.render = pix_map.toImage()
         self.matrix = img.load()
+
+    def start(self, x, y):
+
+        pass
 
     def proceed(self, x, y):
 
@@ -30,9 +34,9 @@ class Can:
             return
         if self.root.curr_color == self.render.pixelColor(x, y).name():
             return
-        self.fill_pixels(x, y, self.render.pixelColor(x, y))
+        self.fill(x, y, self.render.pixelColor(x, y))
 
-    def fill_pixels(self, start_x, start_y, target_color):
+    def fill(self, start_x, start_y, target_color):
 
         queue = [(start_x, start_y)]
         curr = iter(queue)

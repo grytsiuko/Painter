@@ -2,28 +2,20 @@ import math
 from random import random
 from PIL import ImageColor
 
+from src.tools.tool import Tool
 
-class Spray:
+
+class Spray(Tool):
 
     def __init__(self, root):
 
-        self.root = root
-        self.matrix = None
+        super().__init__(root)
 
-    def start(self, img, x, y):
+    def configure(self, img, x, y):
 
         self.matrix = img.load()
-        self.draw_dots(x, y)
 
-    def proceed(self, x, y):
-
-        self.draw_dots(x, y)
-
-    def end(self, x, y):
-
-        self.draw_dots(x, y)
-
-    def draw_dots(self, x, y):
+    def execute(self, x, y):
 
         for i in range(2 * self.root.curr_size):
             phi = random() * 2 * math.pi

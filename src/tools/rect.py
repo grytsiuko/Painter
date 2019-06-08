@@ -1,31 +1,21 @@
 from PIL import ImageDraw
 
+from src.tools.tool import Tool
 
-class Rect:
+
+class Rect(Tool):
 
     def __init__(self, root):
 
-        self.root = root
-        self.first_x = None
-        self.first_y = None
-        self.draw = None
+        super().__init__(root)
 
-    def start(self, img, x, y):
+    def configure(self, img, x, y):
 
         self.draw = ImageDraw.Draw(img)
         self.first_x = x
         self.first_y = y
-        self.draw_rect(x, y)
 
-    def proceed(self, x, y):
-
-        self.draw_rect(x, y)
-
-    def end(self, x, y):
-
-        self.draw_rect(x, y)
-
-    def draw_rect(self, x, y):
+    def execute(self, x, y):
 
         self.draw.rectangle((0, 0, self.root.scene.width(), self.root.scene.height()), fill=(0, 0, 0, 0))
 

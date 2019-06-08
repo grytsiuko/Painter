@@ -3,28 +3,20 @@ from PIL import ImageQt, Image
 from PyQt5.QtCore import QBuffer
 from PyQt5.QtGui import QPainter, QPixmap, QColor
 
+from src.tools.tool import Tool
 
-class Text:
+
+class Text(Tool):
 
     def __init__(self, root):
 
-        self.root = root
-        self.img = None
+        super().__init__(root)
 
-    def start(self, img, x, y):
+    def configure(self, img, x, y):
 
         self.img = img
-        self.draw_text(x, y)
 
-    def proceed(self, x, y):
-
-        self.draw_text(x, y)
-
-    def end(self, x, y):
-
-        self.draw_text(x, y)
-
-    def draw_text(self, x, y):
+    def execute(self, x, y):
 
         img_qt = ImageQt.ImageQt(self.img)
         pix_map = QPixmap.fromImage(img_qt)
